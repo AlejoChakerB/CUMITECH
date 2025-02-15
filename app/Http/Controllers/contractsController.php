@@ -77,7 +77,6 @@ class contractsController extends AppBaseController
     {
         $this->authorize('create_contracts');
         $input = $request->all();
-        dd($input);
         $existing = Contracts::where('employe_id', $input['employe_id'])
         ->where('start_date_contract', '<', $input['start_date_contract'])
         ->orderBy('start_date_contract', 'desc')

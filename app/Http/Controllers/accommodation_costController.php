@@ -124,11 +124,26 @@ class accommodation_costController extends AppBaseController
 
     public function showCostCenter(Request $request)
     {
-        $input = $request->all();
+        // Establecer valores predeterminados y manejar los parámetros de manera segura
         $perPage = $request->input('per_page', 10);
         $search = $request->input('search');
-        $year = '2024'; // Puedes cambiar esto por una variable o valor dinámico
-        $service = $input['service'];
+        $year = '2024';
+        
+        // Obtener el servicio de manera segura, ya sea de la sesión o del request
+        $service = $request->session()->get('service');
+        
+        if ($request->has('service')) {
+            $service = $request->input('service');
+            // Guardar en sesión para mantener el valor entre páginas
+            $request->session()->put('service', $service);
+        }
+        
+        // Verificar si tenemos un servicio válido
+        if (empty($service)) {
+            return redirect()->back()->with('error', 'No se ha especificado un servicio válido');
+        }
+        
+        // Construir la consulta
         $accommodationCostsQuery = accommodation_cost::query()
             ->where('year', $year)
             ->where('service', $service)
@@ -137,8 +152,9 @@ class accommodation_costController extends AppBaseController
         if (!empty($search)) {
             $accommodationCostsQuery->where('service', 'LIKE', '%' . $search . '%');
         }
+        
         $accommodationCosts = $accommodationCostsQuery->paginate($perPage);
-
+        
         return view('accommodation_costs.show_services', compact('accommodationCosts', 'service', 'year'));
     }
 
