@@ -1,0 +1,147 @@
+/* Contenedor principal con scroll horizontal */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    padding: 0.5rem;
+    /* Asegura que el contenido tenga espacio para el scroll */
+    margin-bottom: 1rem;
+}
+
+/* Contenedor interno que mantiene el ancho mínimo */
+.table-responsive-inner {
+    min-width: 850px;
+    width: 100%;
+}
+
+/* Encabezados de la tabla */
+.table-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 120px;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #003366;
+}
+
+.table-header-item {
+    padding: 0.5rem;
+}
+
+.table-header-actions {
+    text-align: initial;
+}
+
+/* Cards de contenido */
+.table-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 7px;
+    padding: 1rem;
+}
+
+.table-card:hover {
+    background-color: #f0f0f0;
+}
+
+.table-card-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 120px;
+    gap: 1rem;
+    align-items: center;
+}
+
+.table-card-item {
+    padding: 0.5rem;
+    min-width: 0;
+    color: #4F4F4F;
+}
+
+.text-red {
+    color: #FF6B6B; /* Rojo */
+    font-weight: bold;
+}
+
+.text-green {
+    color: #4CAF50; /* Verde */
+    font-weight: bold;
+}
+
+/* Información del empleado */
+.employee-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0; /* Permite que el contenido se ajuste */
+}
+
+.employee-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.employee-details {
+    min-width: 0; /* Permite que el contenido se ajuste */
+    overflow: hidden;
+}
+
+.employee-name {
+    color: #4F4F4F;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.employee-dni {
+    color: #A2C61E;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Grupo de botones */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.btn-default {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+/* Indicador de scroll en dispositivos móviles */
+@media (max-width: 736px) {
+    .table-responsive {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        width: calc(100% + 2rem);
+    }
+
+    .table-responsive::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        pointer-events: none;
+    }
+}

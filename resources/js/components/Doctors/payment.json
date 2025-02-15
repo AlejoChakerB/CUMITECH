@@ -1,0 +1,30 @@
+[
+    {
+      "payment": "Monto fijo",
+      "value": "true"
+    },
+    {
+      "payment": "Disponibilidad",
+      "value": "true"
+    },
+    {
+      "payment": "Consulta externa primera vez",
+      "value": "true"
+    },
+    {
+      "payment": "Interconsultas pre-quirurgicas",
+      "value": "true"
+    },
+    {
+      "payment": "Post quirurgicos",
+      "value": "true"
+    },
+    {
+      "payment": "Tarifas diferenciales se reconocen al 100%",
+      "value": "true"
+    },
+    {
+      "payment": "No factura Medicina Integral",
+      "value": "true"
+    }
+  ]
